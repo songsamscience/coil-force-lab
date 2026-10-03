@@ -4,7 +4,7 @@
 <meta charset="utf-8">
 <meta name="viewport" content="width=device-width,initial-scale=1,viewport-fit=cover">
 <meta name="color-scheme" content="dark light">
-<meta name="version" content="1.0">
+<meta name="version" content="1.2">
 <meta name="description" content="말굽자석 사이 전기 그네, 막대자석 앞 코일, 정류자가 달린 전동기로 자기장 속에서 전류가 흐르는 코일이 받는 힘의 방향과 크기를 탐구하고 플레밍 왼손 법칙으로 힘의 방향을 맞혀 보는 중학교 과학 가상실험실">
 <meta property="og:title" content="송쌤과학 가상실험실 | 전류가 흐르는 코일이 받는 힘">
 <meta property="og:description" content="전류 방향·자석의 극·전류 세기를 바꾸며 코일이 움직이는 방향을 관찰하고, 전동기가 계속 도는 까닭을 정류자로 확인해요">
@@ -545,7 +545,7 @@ dialog.drawer.sheet{--lift:0px}
 <script>
 /* ═════════════════ 공통: 도구 · 토큰 색 · 벡터 · 3D 투영 ═════════════════ */
 'use strict';
-const APP_VERSION = '1.1', APP_DATE = '2026-09-26';
+const APP_VERSION = '1.2', APP_DATE = '2026-10-03';
 const LAB_NAME = '전류가 흐르는 코일이 받는 힘';
 const NS = 'http://www.w3.org/2000/svg';
 const $ = (s, r = document) => r.querySelector(s);
@@ -2191,35 +2191,21 @@ const QUESTIONS = [
     src: '교과서 해 보기: 자기장 안에 놓인 전류가 흐르는 코일이 받는 힘 추리하기 (과정 3·4·6)',
     q: '전기 그네 실험에서 전류의 방향을 반대로 바꾸거나 말굽자석의 N극과 S극의 위치를 바꾸면 전기 그네가 움직이는 방향은 어떻게 달라질까? 두 경우를 모두 바꾸었을 때와 함께 설명해 보자.',
     hint: '간이 실험에서 ‘전류 방향 바꾸기’와 ‘자석 뒤집기’를 한 번씩 눌러 보고, 둘 다 누른 상태도 만들어 보세요. 그네가 ‘가’와 ‘나’ 중 어느 쪽으로 기우는지 결과 문장을 보세요.',
-    model: '전류의 방향만 바꾸거나 자석의 극(자기장의 방향)만 바꾸면 전기 그네는 <mark>처음과 반대 방향</mark>으로 움직인다. 전류의 방향과 자기장의 방향을 <mark>모두 바꾸면 처음과 같은 방향</mark>으로 움직인다. 자기장 속에서 전류가 흐르는 코일이 받는 힘의 방향은 <mark>전류의 방향과 자기장의 방향에 따라 달라지기</mark> 때문이다.',
+    model: '전류의 방향만 바꾸거나 자석의 극(자기장의 방향)만 바꾸면 전기 그네는 <mark>처음과 반대 방향</mark>으로 움직이고, 둘을 <mark>모두 바꾸면 처음과 같은 방향</mark>으로 움직인다. 코일이 받는 힘의 방향은 <mark>전류의 방향과 자기장의 방향에 따라 달라져</mark>, 둘 중 하나를 바꿀 때마다 반대가 되기 때문이다.',
   },
   {
     id: 'q2', title: '전류의 세기와 힘의 크기', mini: 'swingI',
     src: '교과서 해 보기 과정 5 · 스스로 평가 · 스스로 확인하기',
     q: '전기 그네에 흐르는 전류의 세기를 점점 크게 하면 전기 그네의 움직임은 어떻게 달라질까? 코일이 받는 힘의 크기와 관련지어 설명해 보자.',
     hint: '간이 실험의 ‘전압’ 손잡이를 2 V에서 6 V 쪽으로 옮겨 보세요. 전류(A) 값과 그네가 기운 각도(°)를 함께 보고, 흐리게 남는 ‘직전’ 그네와 견주어 보세요.',
-    model: '전류의 세기가 셀수록 전기 그네가 <mark>더 많이 움직인다(더 크게 기운다)</mark>. 자기장 속에서 전류가 흐르는 코일이 받는 <mark>힘의 크기는 전류의 세기가 셀수록 크기</mark> 때문이다. 같은 전류라도 더 센 자석을 쓰면 자기장이 세져서 힘이 더 커진다.',
-  },
-  {
-    id: 'q3', title: '코일과 자석이 마주 볼 때', mini: 'coilMag',
-    src: '교과서 탐구: 자기장 안에서 전류가 흐르는 코일이 받는 힘의 특성 추리하기 · 그림 자석과 코일의 같은 극/다른 극',
-    q: '전류가 흐르는 코일 앞에 자석을 두었더니 코일이 자석 쪽으로 끌려왔다. 전류의 방향은 그대로 두고 자석을 뒤집어 코일을 마주 보는 극을 바꾸면 코일은 어떻게 움직일까? 코일의 극과 자석의 극 사이에 작용하는 힘으로 설명해 보자.',
-    hint: '간이 실험에서 ‘자석 뒤집기’를 눌러 보세요. 코일 앞뒤에 붙은 N·S 표시와 자석의 N·S 표시 가운데 서로 마주 보는 두 극을 비교해 보세요.',
-    model: '자석을 뒤집으면 코일은 <mark>자석에서 밀려나는 방향</mark>으로 움직인다. 전류가 흐르는 코일은 한쪽 면이 N극, 다른 쪽 면이 S극인 <mark>자석처럼</mark> 된다. 처음에는 코일과 자석의 <mark>다른 극끼리</mark> 마주 보아 끌어당기는 힘이 작용했지만, 자석을 뒤집으면 <mark>같은 극끼리</mark> 마주 보게 되어 서로 밀어내는 힘이 작용한다.',
+    model: '전류의 세기를 크게 할수록 전기 그네는 처음과 같은 방향으로 <mark>더 많이 움직인다(더 크게 기운다)</mark>. 같은 자석을 쓸 때 <mark>전류의 세기가 셀수록</mark> 자기장 속에서 코일이 받는 <mark>힘의 크기가 커지기</mark> 때문이다.',
   },
   {
     id: 'q4', title: '정류자가 하는 일', mini: 'motorComm',
     src: '교과서 본문: 전동기의 원리 · 정류자',
     q: '전동기의 코일에는 정류자가 연결되어 있다. 정류자를 빼고 코일 끝을 그냥 고리로 연결하면 코일이 어떻게 움직이는지 비교하고, 정류자가 하는 역할을 설명해 보자.',
     hint: '간이 실험에서 ‘정류자 있음’과 ‘정류자 없음(고리)’을 바꿔 보세요. 코일에 붙은 N·S 표시와 코일 두 변의 힘 화살표가 반 바퀴 지날 때 어떻게 되는지 보세요.',
-    model: '정류자는 코일이 <mark>반 바퀴 돌 때마다 코일에 흐르는 전류의 방향을 바꾸어</mark> 준다. 그래서 코일의 왼쪽과 오른쪽 부분이 받는 힘의 방향이 늘 같은 쪽으로 돌리는 방향이 되어 코일이 <mark>계속 같은 방향으로 회전</mark>한다. 정류자가 없으면 코일 속 전류 방향이 바뀌지 않아 코일이 반 바퀴쯤 돌다가 되돌아오며 흔들리다가 <mark>코일 면이 자기장에 수직인 곳에서 멈춘다</mark>.',
-  },
-  {
-    id: 'q5', title: '전동기를 빠르게, 반대로', mini: 'motorFast',
-    src: '교과서 스스로 확인하기(사고력) · 스스로 평가',
-    q: '전동기가 더 빠르게 회전하게 하는 방법과 회전 방향을 반대로 바꾸는 방법을 한 가지 이상씩 설명해 보자.',
-    hint: '간이 실험에서 ‘전압’, ‘강한 자석’, ‘코일 20회’를 하나씩 바꾸며 ‘1초에 ○바퀴’ 값을 비교해 보세요. ‘전류 방향 바꾸기’를 누르면 도는 방향이 어떻게 되는지도 보세요.',
-    model: '전동기를 빠르게 회전시키려면 코일에 흐르는 <mark>전류의 세기를 크게</mark> 하거나, <mark>더 센 자석</mark>을 쓰거나, <mark>코일을 더 많이 감으면</mark> 된다. 코일이 받는 힘이 커지기 때문이다. 회전 방향을 반대로 바꾸려면 <mark>전류의 방향을 반대로</mark> 하거나(전원의 (+)극과 (−)극을 바꾸어 연결) <mark>자석의 N극과 S극의 위치를 바꾸면</mark> 된다.',
+    model: '정류자가 있으면 코일이 <mark>계속 같은 방향으로 회전</mark>하지만, 고리로 연결하면 돌다가 되돌아오며 흔들린 뒤 <mark>코일 면이 자기장에 수직인 곳에서 멈춘다</mark>. 정류자는 코일이 <mark>반 바퀴 돌 때마다 코일에 흐르는 전류의 방향을 바꾸어</mark> 힘이 늘 같은 쪽으로 돌리게 한다. 고리일 때는 전류의 방향이 그대로라서 멈추는 자리를 지날 때마다 힘이 코일을 되돌린다.',
   },
 ];
 const MIN_CHARS = 20;
@@ -2228,16 +2214,12 @@ const MIN_CHARS = 20;
 const MINI_META = {
   swingDir: ['전기 그네의 방향', '전원이 켜진 그네 — 전류 방향·자석을 바꿔 보세요'],
   swingI: ['전류 세기와 그네', '전압 손잡이로 전류를 바꿔 보세요'],
-  coilMag: ['코일 앞의 막대자석', '자석을 뒤집거나 전류 방향을 바꿔 보세요'],
   motorComm: ['정류자가 있을 때와 없을 때', '정류자 있음·없음을 바꿔 보세요'],
-  motorFast: ['전동기의 빠르기와 방향', '전압·자석·코일·전류 방향을 바꿔 보세요'],
 };
 const MINI_SPECS = {
   swingDir: { cls: 'SwingLab', state: { on: true, V: 4 }, lock: ['power', 'flip'], ctl: ['power', 'rev', 'flip', 'reset'] },
   swingI: { cls: 'SwingLab', state: { on: true, V: 2 }, lock: ['power'], ctl: ['V', 'power', 'reset'] },
-  coilMag: { cls: 'CoilMagLab', state: { on: true, V: 4 }, show: { poles: true }, lock: ['power', 'mflip'], ctl: ['power', 'rev', 'mflip', 'reset'] },
   motorComm: { cls: 'MotorLab', state: { on: true, V: 4 }, show: { poles: true }, lock: ['power', 'comm'], ctl: ['comm', 'power', 'reset'] },
-  motorFast: { cls: 'MotorLab', state: { on: true, V: 3 }, lock: ['power', 'flip'], ctl: ['V', 'strong', 'turns', 'rev', 'reset'] },
 };
 const LAB_CLASSES = { SwingLab: (h, o) => new SwingLab(h, o), CoilMagLab: (h, o) => new CoilMagLab(h, o), MotorLab: (h, o) => new MotorLab(h, o) };
 class LabMini {
@@ -2332,7 +2314,7 @@ const THEORY = [
     id: 'use', title: '코일이 받는 힘의 활용', fig: null,
     def: '선풍기·세탁기·진공청소기·전기 자동차·드론·스마트폰 진동처럼 물체를 돌리거나 움직이는 많은 전기 기구에 전동기가 들어 있다.',
     pts: ['<b>스피커</b>: 고정된 자석과 진동판에 연결된 코일이 있다. 코일에 흐르는 전류의 방향이 바뀌면 코일이 받는 힘의 방향이 바뀌어 진동판이 진동하며 소리가 난다.', '<b>전동기</b>: 스마트폰 진동처럼 작은 것부터 전기 자동차처럼 큰 것까지 쓰이고, 로봇의 정교한 움직임에도 쓰인다.', '실제 전동기에는 여러 개의 코일과 자석이 들어 있다.'],
-    link: '탐구 질문 5 — 전동기를 빠르게 하는 방법과 연결해 보세요.',
+    link: '실험대 ‘전동기 원리’ — 전압·‘강한 자석’·‘코일 20회’를 바꾸며 ‘1초에 ○바퀴’ 값을 견주어 보세요.',
   },
 ];
 function theoryFigure(id, host) {
@@ -2411,7 +2393,8 @@ function mirror() {
 const emptyRecords = () => ({ swing: {}, swingI: [], foil: {}, coil: {}, motor: [], rule: { tries: [], n: 0 } });
 const S = store.get('ui', { screen: 'swing', swingMode: 'swing', ruleMode: 'practice' });
 let records = Object.assign(emptyRecords(), store.get('records', {}));
-let answers = store.get('answers', {}), revisions = store.get('revisions', {}), locks = store.get('locks', {}), hints = store.get('hints', {}), seen = store.get('seen', {});
+const onlyQ = o => Object.fromEntries(Object.entries(o || {}).filter(([k]) => QUESTIONS.some(q => q.id === k)));   // 지금 문항(id)의 기록만 — 지운 문항의 옛 답안은 버림
+let answers = onlyQ(store.get('answers', {})), revisions = onlyQ(store.get('revisions', {})), locks = onlyQ(store.get('locks', {})), hints = onlyQ(store.get('hints', {})), seen = onlyQ(store.get('seen', {}));
 const keep = {};                         // 화면을 옮겨도 실험 상태(전압·방향·시점)를 유지
 let cur = { lab: null, id: null };
 let narrow = innerWidth <= 600;
@@ -2972,7 +2955,7 @@ function restoreKept(sid) {
     const b = JSON.parse(localStorage.getItem(KEY('p-' + sid)) || '{}');
     LEARN_KEYS.forEach(k => { if (b[k] != null) sessionStorage.setItem(KEY(k), JSON.stringify(b[k])); });
     records = Object.assign(emptyRecords(), store.get('records', {}));
-    answers = store.get('answers', {}); revisions = store.get('revisions', {}); locks = store.get('locks', {}); hints = store.get('hints', {}); seen = store.get('seen', {});
+    answers = onlyQ(store.get('answers', {})); revisions = onlyQ(store.get('revisions', {})); locks = onlyQ(store.get('locks', {})); hints = onlyQ(store.get('hints', {})); seen = onlyQ(store.get('seen', {}));
     go(S.screen); toast('지난 기록을 불러왔어요.');
   } catch (e) { toast('지난 기록을 불러오지 못했어요. 새로 시작해도 실험은 그대로 할 수 있어요.', { error: true }); }
 }
@@ -3066,7 +3049,7 @@ function openReport() {
       const ch = $('#rpChange'); if (ch) ch.onclick = () => { student.asked = false; closeModal(); askStudent('report', openReport); };
       $('#rpPrint').onclick = () => {
         const o = { rec: !!($('#opRec') && $('#opRec').checked), ans: $('#opAns').checked && !$('#opAns').disabled, model: $('#opModel').checked };
-        closeModal(); askStudent('report', () => printDoc(() => reportHtml(o), `${LAB_FILE}_리포트_${student.sid}_${student.name}`));
+        closeModal(); askStudent('report', () => printDoc(() => reportHtml(o), `${LAB_FILE}_${student.sid}_${student.name}_${todayStr()}`));
       };
       $('#wsPrint').onclick = () => { const t = $('#opTeacher').checked; closeModal(); printDoc(() => worksheetHtml(t), `${LAB_FILE}_학습지${t ? '_교사용' : ''}`); };
     },
@@ -3116,7 +3099,7 @@ function worksheetHtml(teacher) {
 let printRestore = null;
 function printDoc(make, title) {
   const pv = $('#printview'), oldTitle = document.title, oldTheme = document.documentElement.dataset.theme;
-  document.title = title.replace(/[\\/:*?"<>|\s]/g, '');
+  document.title = title.replace(/[\\/:*?"<>|\s\u0000-\u001f\u007f-\u009f]/g, '');
   document.documentElement.dataset.theme = 'light'; TOK.clear();
   pv.innerHTML = make();
   printRestore = () => { document.title = oldTitle; document.documentElement.dataset.theme = oldTheme; TOK.clear(); pv.innerHTML = ''; printRestore = null; redrawAll(); };
